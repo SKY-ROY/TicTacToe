@@ -37,7 +37,9 @@ public class GameController_PvAI : MonoBehaviour
 
     public bool playerMove;//AI
     public float delay = 10;//AI
-    
+
+    public bool winnerFlag = false;
+
     private string playerSide;
     private string computerSide;//AI
     private int value;//AI
@@ -127,6 +129,7 @@ public class GameController_PvAI : MonoBehaviour
     /// </summary>
     public void EndTurn()
     {
+        winnerFlag = false;
         moveCount++;
         //different methods corresponding to different board size
         if(boardSize == 9)//3x3 board
@@ -202,6 +205,7 @@ public class GameController_PvAI : MonoBehaviour
         }
         else
         {
+            winnerFlag = true;
             SetGameOverText(winningPlayer + " Wins!");
             winSound.Play();
             if(winningPlayer == "X")
@@ -339,7 +343,7 @@ public class GameController_PvAI : MonoBehaviour
         }
 
         //second diognal check
-        if (buttonList[2].text == playerSide && buttonList[4].text == playerSide && buttonList[6].text == playerSide)
+        else if (buttonList[2].text == playerSide && buttonList[4].text == playerSide && buttonList[6].text == playerSide)
         {
             Debug.Log("Player check");
             GameOver(playerSide);
@@ -353,7 +357,7 @@ public class GameController_PvAI : MonoBehaviour
         }
 
         //draw condition
-        if (moveCount == 9)
+        else if (moveCount == 9 && !winnerFlag)
         {
             GameOver("draw");
         }
@@ -406,8 +410,9 @@ public class GameController_PvAI : MonoBehaviour
             GameOver(computerSide);
             ///AI
         }
+
         //second diognal check
-        if (buttonList[3].text == playerSide && buttonList[6].text == playerSide && buttonList[9].text == playerSide && buttonList[12].text == playerSide)//player side check
+        else if (buttonList[3].text == playerSide && buttonList[6].text == playerSide && buttonList[9].text == playerSide && buttonList[12].text == playerSide)//player side check
         {
             GameOver(playerSide);
         }
@@ -419,7 +424,7 @@ public class GameController_PvAI : MonoBehaviour
         }
 
         //draw condition
-        if (moveCount == 16)
+        else if (moveCount == 16 && !winnerFlag)
         {
             GameOver("draw");
         }
@@ -463,7 +468,8 @@ public class GameController_PvAI : MonoBehaviour
             }
             j += 1;
         }
-        //diognal check
+
+        //first diognal check
         if (buttonList[0].text == playerSide && buttonList[6].text == playerSide && buttonList[12].text == playerSide && buttonList[18].text == playerSide && buttonList[24].text == playerSide)//player side check
         {
             GameOver(playerSide);
@@ -474,7 +480,9 @@ public class GameController_PvAI : MonoBehaviour
             GameOver(computerSide);
             ///AI
         }
-        if (buttonList[4].text == playerSide && buttonList[8].text == playerSide && buttonList[12].text == playerSide && buttonList[16].text == playerSide && buttonList[20].text == playerSide)//player side check
+
+        //second diognal check
+        else if (buttonList[4].text == playerSide && buttonList[8].text == playerSide && buttonList[12].text == playerSide && buttonList[16].text == playerSide && buttonList[20].text == playerSide)//player side check
         {
             GameOver(playerSide);
         }
@@ -486,7 +494,7 @@ public class GameController_PvAI : MonoBehaviour
         }
 
         //draw condition
-        if (moveCount == 25)
+        else if (moveCount == 25 && !winnerFlag)
         {
             GameOver("draw");
         }
