@@ -1,7 +1,23 @@
 # TicTacToe
 
-# *Classes Used:*
+# *APK:*
+https://github.com/SKY-ROY/TicTacToe/raw/master/Builds/Android/TicTacToe.apk
+#
 
+# *Screenshots:*
+Main menu: 
+<img src="Builds/Screenshots/1.jpg">
+Settings:
+<img src="Builds/Screenshots/2.jpg">
+Board configuration:
+<img src="Builds/Screenshots/3.jpg">
+Gameplay scene:
+<img src="Builds/Screenshots/4.jpg">
+Pause menu:
+<img src="Builds/Screenshots/5.jpg">
+#
+
+# *Classes Used:*
 TextFields
 SaveSystem
 StateData
@@ -12,6 +28,7 @@ StatsControl
 GameController_PvAI
 GridSpace
 LoadAssetBundles
+#
 
 # *The functioning of the Classes:*
 
@@ -52,3 +69,4 @@ Clicking this will create an AssetBundle with the GameTitle prefab in it and the
 On Play mode we see the Icon and Title of the game loaded at runtime through asset bundles.
 
 Further Code Analysis and explanation is given in the code through comments and summaries.
+#
